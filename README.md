@@ -11,7 +11,8 @@ Rename root config folder(This is to avoid naming conflict when moving inner con
 
 ## Creating Django Apps
 1. _Never have to many functionalities in one app_
-   ***Divide and Conquer***
+
+                 ***Divide and Conquer***
 
     ##### Rule of thump for creating Django Applications
             You should be able to describe the application in one sentence
