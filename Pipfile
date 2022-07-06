@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 django = "==2.2.5"
+pillow = "*"
 
 [dev-packages]
 flake8 = "*"
