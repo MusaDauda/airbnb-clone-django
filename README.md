@@ -19,3 +19,10 @@ Rename root config folder(This is to avoid naming conflict when moving inner con
         
    
 2. Applications name should be **plurals.** A good example is  posts, users, todos etc.
+
+3. Make little migrations as possible when defining your app models.
+
+#### When importing modules, a good practice is to...
+1. Import python and django modules first at the top.
+2. Import Third Party modules preceding the top modules
+3. Finally, import your modules at the bottom of the stack order.
