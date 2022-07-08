@@ -2,7 +2,7 @@ from django.contrib import admin
 from . import models
 
 
-@admin.register(models.RoomType)
+@admin.register(models.RoomType, models.Amenity, models.Facility, models.HouseRule)
 class ItemAdmin(admin.ModelAdmin):
 
     pass
