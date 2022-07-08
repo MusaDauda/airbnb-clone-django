@@ -26,3 +26,29 @@ Rename root config folder(This is to avoid naming conflict when moving inner con
 1. Import python and django modules first at the top.
 2. Import Third Party modules preceding the top modules
 3. Finally, import your modules at the bottom of the stack order.
+
+#### When defining foreign keys or importing, some good practice and tweaks.....
+1. Define your import using strings => `""`
+```python
+class Photo(core_models.TimeStampedModel):
+    """Photo Model Definition."""
+
+    caption = models.CharField(max_length=100)
+    file = models.ImageField()
+    room = models.ForeignKey(Room, on_delete=CASCADE)
+
+# This will have an error if `Room` is not defined first before before the Photo class. A good practice is...
+
+
+class Photo(core_models.TimeStampedModel):
+    """Photo Model Definition."""
+
+    caption = models.CharField(max_length=100)
+    file = models.ImageField()
+    room = models.ForeignKey("Room", on_delete=CASCADE)
+
+    ## Yes, enclose in quotes, haha...
+
+# If you do this correctly, you might not have to import every model you create or need.
+# I still like importing though 🚶
+```
