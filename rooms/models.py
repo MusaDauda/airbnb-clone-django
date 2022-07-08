@@ -1,4 +1,5 @@
 from email.policy import default
+from tabnanny import verbose
 from django.db import models
 from django.forms import IntegerField
 from django_countries.fields import CountryField
@@ -22,25 +23,30 @@ class AbstractItem(core_models.TimeStampedModel):
 class RoomType(AbstractItem):
     """RoomType Model Definition."""
 
-    pass
+    class Meta:
+        verbose_name = "Room Type"
+        ordering = ("name",)
 
 
 class Amenity(AbstractItem):
     """Amenity Model Definition."""
 
-    pass
+    class Meta:
+        verbose_name_plural = "Amenities"
 
 
 class Facility(AbstractItem):
     """Facility Model Definition."""
 
-    pass
+    class Meta:
+        verbose_name_plural = "Facilities"
 
 
 class HouseRule(AbstractItem):
     """HouseRule Model Definition."""
 
-    pass
+    class Meta:
+        verbose_name = "House Rule"
 
 
 class Room(core_models.TimeStampedModel):
@@ -61,9 +67,9 @@ class Room(core_models.TimeStampedModel):
     instant_book = models.BooleanField(default=False)
     host = models.ForeignKey(user_models.User, on_delete=models.CASCADE)
     room_type = models.ForeignKey(RoomType, on_delete=models.SET_NULL, null=True)
-    amenities = models.ManyToManyField(Amenity)
-    facilities = models.ManyToManyField(Facility)
-    house_rules = models.ManyToManyField(HouseRule)
+    amenities = models.ManyToManyField(Amenity, blank=True)
+    facilities = models.ManyToManyField(Facility, blank=True)
+    house_rules = models.ManyToManyField(HouseRule, blank=True)
 
     def __str__(self):
         return self.name
