@@ -52,3 +52,21 @@ class Photo(core_models.TimeStampedModel):
 # If you do this correctly, you might not have to import every model you create or need.
 # I still like importing though 🚶
 ```
+
+#### def _str(self): function (self-depr method.... forgive me🤣):
+```python
+class Conversation(core_models.TimeStampedModel):
+
+    """Conversation Model Definition"""
+
+    participants = models.ManyToManyField("users.User", blank=True)
+
+    def __str__(self):
+        return self.created ## Django is expecting a string, it gets a DateTime object(Hence Error).
+        #return str(self.created) ## Here we force a string conversion
+
+
+        # I will be getting back to that though, just to hack it for now...
+
+
+```
