@@ -1,3 +1,9 @@
 from django.contrib import admin
+from lists import models
 
-# Register your models here.
+
+@admin.register(models.List)
+class ListAdmin(admin.ModelAdmin):
+    """List Admin Definition"""
+
+    pass
